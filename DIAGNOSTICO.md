@@ -2,21 +2,38 @@
 
 ## Unidade 3 — DevOps
 
-### 1. Problemas identificados
+**Universidade:** Universidade Veiga de Almeida (UVA)  
+**Professor:** Prof. Dr. Felipe Cordeiro
+
+**Integrantes:**
+- Pedro Henrique Novaes — 1250216570
+- Willian Carvalho Velasco — 1250123808
+
+## 1. Problemas identificados
+
+O cenário apresenta três problemas no ambiente de um sistema fictício de matrículas.
 
 | Problema | Consequência | Estado desejado | Evidência da correção |
 |---|---|---|---|
-| Versões diferentes do banco em homologação e produção | Testes podem passar em homologação e falhar em produção devido à incompatibilidade. | Versões das dependências relevantes compatíveis e controladas. | Comparação das versões e testes funcionais de matrícula. |
-| Porta liberada manualmente | Desvio de configuração (drift), com possível exposição indevida do serviço. | Porta e regras de acesso documentadas, revisadas e aplicadas conforme a configuração aprovada. | Comparação das regras reais com as definidas no repositório e teste de acesso. |
-| Configuração depende de uma pessoa | Dificuldade para reproduzir o ambiente na ausência do responsável. | Configuração automatizada, documentada e versionada no GitHub. | Outro integrante consegue preparar e verificar o ambiente com base nos arquivos do repositório. |
+| Versões diferentes do banco de dados | Testes podem funcionar em homologação, mas falhar em produção. | Versões compatíveis e controladas nos dois ambientes. | Comparar as versões e realizar testes funcionais. |
+| Porta liberada manualmente | Pode causar diferenças de configuração e problemas de segurança. | Porta configurada e documentada no repositório. | Verificar a configuração e testar o acesso ao serviço. |
+| Configuração depende de uma pessoa | A equipe pode ter dificuldades para reproduzir o ambiente. | Configuração automatizada, documentada e versionada. | Outro integrante consegue preparar e verificar o ambiente. |
 
-### 2. Classificação das intervenções
+## 2. Camadas afetadas
 
-- **Configuração:** alinhar versões e ajustar as regras da porta.
-- **Gerenciamento:** identificar o drift, revisar as alterações e manter as configurações atualizadas.
-- **Provisionamento:** disponibilizar os recursos necessários ao ambiente, caso precisem ser criados.
-- **Implantação:** publicar a aplicação e testar o funcionamento após a preparação do ambiente.
+- **Banco de dados:** camadas de dados, software e configuração.
+- **Porta liberada manualmente:** camadas de rede, segurança e configuração.
+- **Dependência de uma pessoa:** camadas de configuração e operação.
 
-### 3. Conclusão
+## 3. Classificação das intervenções
 
-Os problemas mostram a importância de manter os ambientes de homologação e produção sob controle de versão, automatizar configurações e verificar os resultados das mudanças. A documentação e a revisão em equipe reduzem a dependência de uma única pessoa.
+- **Configuração:** alinhar as versões do banco e registrar corretamente as regras de acesso.
+- **Gerenciamento:** identificar diferenças entre ambientes, revisar alterações e manter a documentação atualizada.
+- **Provisionamento:** criar automaticamente os recursos necessários, quando houver necessidade.
+- **Implantação:** publicar a aplicação e verificar seu funcionamento após a configuração do ambiente.
+
+## 4. Conclusão
+
+O diagnóstico mostrou a importância de manter os ambientes padronizados, documentados e sob controle de versão.
+
+O uso de ferramentas de automação e a revisão das alterações pela equipe permitem reduzir erros, facilitar a reprodução do ambiente e verificar se as configurações estão funcionando corretamente.
